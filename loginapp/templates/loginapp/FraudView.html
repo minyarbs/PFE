@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            padding-right: 5%;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+
+<body style="width: 100%">
+    <nav class="sb-topnav navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+
+        <div class="container px-5">
+            <a class="navbar-brand" href="">
+                <img height="50px" src="{% static 'assets/it_serv_logo.png' %}" alt="..." />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="EmployeeDashboard">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="FraudView">Fraud Instances</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+
+                </ul>
+            </div>
+        </div>
+
+
+    </nav>
+    <div class="" style="width: 95%; padding-left: 5%;">
+      
+            
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header">
+                        <h3 class="text-center font-weight-light my-4"> Fraud View</h3>
+                    </div>
+                    <div class="container-fluid px-4 " style="padding-top: 40px;">
+                        <div class="card mb-4">
+                            <div class="row g-3 " style=" padding: 20px;">
+                                <div class="col">
+                                    <h6><strong>Name:</strong> {{ first_name }} {{ last_name }}</h6>
+                                    <h6><strong>Employee ID:</strong> {{ ID }}</h6>
+                                    <h6><strong>Fraud Percentage in {{date}} : </strong> {{pourcentage}} % </h6>
+                                   {% if pourcentage > 80 %} 
+                                    <h7 style="color: red;"> You have surpassed the set fraud pourcentage threshhold. Please contact your Human Ressources for more Information.</h7>
+                                    {% endif %}
+                                    <br>
+                                        <form method="GET" action="{% url 'FraudView' %}">
+                                        <div class="row ">
+                                            <div class="col">
+                                                <select id="month" name="month" class="form-select"
+                                                    aria-label="Default select example">
+                                                    <option selected>Select Month</option>
+                                                    <option value="1">January</option>
+                                                    <option value="2">February</option>
+                                                    <option value="3">March</option>
+                                                    <option value="4">April</option>
+                                                    <option value="5">May</option>
+                                                    <option value="6">June</option>
+                                                    <option value="7">July</option>
+                                                    <option value="8">August</option>
+                                                    <option value="9">September</option>
+                                                    <option value="10">October</option>
+                                                    <option value="11">November</option>
+                                                    <option value="12">December</option>
+                                                </select>
+
+
+                                            </div>
+                                            <div class="col">
+                                                <button type="submit" class="btn btn-primary"> Update Chart </button>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    <br>
+                                    
+                                    <table>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Fraud</th>
+                                        </tr>
+                                        {% for record in Info %}
+                                        <tr>
+                                            <td>{{ record.date }}</td>
+                                            <td>{{ record.is_fraud }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+           
+        
+
+
+
+    </div>
+    </div>
+</body>
+
+</html>
