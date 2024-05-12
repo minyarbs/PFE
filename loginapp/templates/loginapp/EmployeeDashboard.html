@@ -30,7 +30,7 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="EmployeeDashboard">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="FraudView">Fraud Instances</a></li>
-                            <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="AccountInfo">Contact</a></li>
                             <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
         
                         </ul>
@@ -44,19 +44,38 @@
             <div class="col-lg-7">
                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                     <div class="card-header">
-                        <h3 class="text-center font-weight-light my-4"> General Employee Information</h3>
+                        <h3 class="text-center font-weight-light my-4"> Welcome {{first_name}} {{last_name}}</h3>
                     </div>
                     <div class="card-body">
-                        <h6><strong>Name:</strong> {{first_name}} {{last_name}}</h6>
-                        <h6><strong>Employee Id:</strong> {{ID}}</h6>
-                        <h6><strong>Email:</strong> {{email}}</h6>
-                        <h6><strong>Department:</strong> {{Department}}</h6>
-                        <h6><strong>Job Role:</strong> {{JobRole}}</h6>
-                        <h6><strong>Business Travels:</strong> {{BusinessTravel}}</h6>
-                        <h6><strong>Number of Companies Worked:</strong> {{CompaniesWorked}}</h6>
-                    </div>
-                    
-                   
+                        <form id="month-form" method="GET" action="{% url 'EmployeeDashboard' %}">
+                            <select id="month" name="month" class="form-select" aria-label="Default select example">
+                                <option value="" {% if not selected_month %}selected{% endif %}>Select Month</option>
+                                <option value="1" {% if selected_month == '1' %}selected{% endif %}>January</option>
+                                <option value="2" {% if selected_month == '2' %}selected{% endif %}>February</option>
+                                <option value="3" {% if selected_month == '3' %}selected{% endif %}>March</option>
+                                <option value="4" {% if selected_month == '4' %}selected{% endif %}>April</option>
+                                <option value="5" {% if selected_month == '5' %}selected{% endif %}>May</option>
+                                <option value="6" {% if selected_month == '6' %}selected{% endif %}>June</option>
+                                <option value="7" {% if selected_month == '7' %}selected{% endif %}>July</option>
+                                <option value="8" {% if selected_month == '8' %}selected{% endif %}>August</option>
+                                <option value="9" {% if selected_month == '9' %}selected{% endif %}>September</option>
+                                <option value="10" {% if selected_month == '10' %}selected{% endif %}>October</option>
+                                <option value="11" {% if selected_month == '11' %}selected{% endif %}>November</option>
+                                <option value="12" {% if selected_month == '12' %}selected{% endif %}>December</option>
+                            </select>
+                            <div class="col">
+                               
+                            </div>
+                        </form>
+                    {{chart | safe }}
+                        <input type="hidden" id="selected-month" name="selected_month">
+                               
+                </div>
+                <div class="card-footer justify-content-center">
+                    {% if percentage > 80 %}
+                    <p style="color: red;"> You have surpassed the 80% threshold.</p>
+                    <p style="color: red;"> Please contact your Human Ressouces !</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -67,3 +86,18 @@
     </div>
 </body>
 </html>
+<script>
+    // Get the select element and hidden input field
+    const selectMonth = document.getElementById('month');
+    const selectedMonthInput = document.getElementById('selected-month');
+
+    // Set initial value for selected month
+    selectedMonthInput.value = selectMonth.value;
+
+    // Add event listener to update hidden input with selected month
+    selectMonth.addEventListener('change', function () {
+        selectedMonthInput.value = this.value;
+        
+        document.getElementById('month-form').submit();
+    });
+</script>

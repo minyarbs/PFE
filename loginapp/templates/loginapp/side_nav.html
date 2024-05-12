@@ -1,0 +1,39 @@
+{% extends '/home/minyar/DjangoProj/loginapp/templates/loginapp/HRbase.html' %}
+{% block main_content %}
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <div class="sb-sidenav-menu-heading">Dashboard</div>
+                    <a class="nav-link" href="charts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        General Percentage of fraud
+                    </a>
+                    <a class="nav-link" href="EmployeeFraud">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Fraud count of Employees
+                    </a>
+                    <a class="nav-link" href="reasons">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Posssible Reasons of fraud
+                    </a>
+                    <a class="nav-link" href="../OneEmployee">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Research an Employee
+                    </a>
+                </div>
+            </div>
+            
+        </nav> 
+    </div>
+    <div id="layoutSidenav_content">
+            {% block content %}
+
+{% endblock %}
+    </div> 
+    
+    </div>
+  
+
+   {% endblock %}

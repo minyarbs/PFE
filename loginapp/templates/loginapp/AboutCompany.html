@@ -1,0 +1,50 @@
+{% extends '/home/minyar/DjangoProj/loginapp/templates/loginapp/HRbase.html' %}
+{% block main_content  %}
+{% load static %}
+<section class="py-5" id="features">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0 d-flex flex-column align-items-center justify-content-center">
+                <h2 class="fw-bolder mb-0">Company Name: XYZ</h2>
+                <img height="200px" src="{% static 'assets/xyzcorporatepro.png' %}" alt="..." />
+            </div>            
+            <div class="col-lg-8">
+                <div class="row gx-5 row-cols-1 row-cols-md-2">
+                    <div class="col mb-5 h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                        <h2 class="h5">Location:</h2>
+                        <p class="mb-0">New York City, USA</p>
+                    </div>
+                    <div class="col mb-5 h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                        <h2 class="h5">Number of employees:</h2>
+                        <p class="mb-0"> 1000 </p>
+                    </div>
+                    <div class="col mb-5 mb-md-0 h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                        <h2 class="h5">Mission Statement:</h2>
+                        <p class="mb-0">XYZ Corporation is committed to providing innovative solutions and exceptional services to meet the evolving needs of our clients.</p>
+                    </div>
+                    <div class="col h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                        <h2 class="h5">Services Offered:</h2>
+                        <p class="mb-0"> Software Development</p>
+                        <p class="mb-0">Consulting</p> 
+                        <p class="mb-0"> Digital Solutions</p>
+                    </div>
+                    <div class="col mb-5 mb-md-0 h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                        <h2 class="h5">Clientele:</h2>
+                        <p class="mb-0">XYZ Corporation serves a diverse range of clients, including small businesses, startups, multinational corporations, and government agencies.</p>
+                    </div>
+                    <div class="col h-100">
+                        <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                        <h2 class="h5">Values:</h2>
+                        <p class="mb-0">At XYZ Corporation, we prioritize integrity, innovation, and customer satisfaction. We believe in fostering long-term partnerships with our clients and are dedicated to delivering superior results with every project.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

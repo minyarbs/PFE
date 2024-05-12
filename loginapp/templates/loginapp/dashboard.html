@@ -1,85 +1,9 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Dashboard</title>
-
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th,
-        td {
-            text-align: center;
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
-            border-top: 1px solid #ddd;
-            border-left: 1px solid #ddd;
-            border-right: 1px solid #ddd;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        h3 {
-            color: #0d6efd;
-        }
-    </style>
-
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-</head>
-
-<body class="sb-nav-fixed">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container px-5">
-            <a class="navbar-brand" href="">
-                <img height="50px" src="{% static 'assets/it_serv_logo.png' %}" alt="..." />
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="dashboard">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="charts">Charts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
-
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
-                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                    <div class="card-header">
-                        <h3 class="text-center font-weight-light my-4"> Company Information</h3>
-                    </div>
-                    <div class="card-body">
-                        <h6> Name: XYZ</h6>
-                        <h6> Location: New York</h6>
-                        <h6> Number of employees: 4000</h6>
-                    </div>
-                   
-                </div>
-            </div>
-        </div>
-        <br>
+{% extends '/home/minyar/DjangoProj/loginapp/templates/loginapp/HRbase.html' %}
+{% block main_content  %}
+<div class="container" style="padding: 10px; position: relative; color: rgb(252, 151, 19);">
+   <h1> DataBase Overview </h1>
+</div>
+    <div class="container " >
         <div class="card mb-1">
             <div class="card-header">
                 
@@ -118,9 +42,9 @@
                             <button class="btn btn-primary" type="submit">Upload New File</button>
                        
                     </form>
-                    {% if not is_csv_general_info %}
-                    <p>Uploaded file is not a CSV</p>
-                    {% endif %}
+                   
+                    <p style="color: red;">{{message}}</p>
+                   
                 </div>
             </div>
         </div>
@@ -163,9 +87,7 @@
                             <button class="btn btn-primary" type="submit">Upload New File</button>
                        
                     </form>
-                    {% if not is_csv_survey %}
-                    <p>Uploaded file is not a CSV</p>
-                    {% endif %}
+                    <p style="color: red;">{{message2}}</p>
                 </div>
             </div>
         </div>
@@ -208,13 +130,9 @@
                             <button class="btn btn-primary" type="submit">Upload New File</button>
                        
                     </form>
-                    {% if not is_csv_attendance %}
-                    <p>Uploaded file is not a CSV</p>
-                    {% endif %}
+                    <p style="color: red;">{{message3}}</p>
                 </div>
             </div>
         </div>
     </div>
-</body>
-
-</html>
+{% endblock %}
