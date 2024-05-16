@@ -88,6 +88,7 @@ def dashboard(request):
     message=''
     message2=''
     message3=''
+    message_succ=''
 
     if request.method == 'POST':
         form_general_info = FileUploadForm(request.POST, request.FILES, prefix='general_info')
@@ -108,6 +109,7 @@ def dashboard(request):
                     original_general_info = pd.concat([original_general_info, df_general_info], ignore_index=True)
                     original_general_info = original_general_info.drop_duplicates()
                     original_general_info.to_csv("uploads/data/general_info.csv", index=False)
+                    message_succ="Upload Was successful"
             else:
                 message= "Uploaded file is not a CSV."
 
@@ -157,7 +159,8 @@ def dashboard(request):
         'csv_content_attendance': original_attendance.head(5),
         'message':message,
         'message3':message3,
-        'message2':message2
+        'message2':message2,
+        'message_succ':message_succ
 
     })
 

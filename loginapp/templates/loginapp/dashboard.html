@@ -1,6 +1,6 @@
 {% extends '/home/minyar/DjangoProj/loginapp/templates/loginapp/HRbase.html' %}
 {% block main_content  %}
-<div class="container" style="padding: 10px; position: relative; color: rgb(252, 151, 19);">
+<div id="title" class="container" style="padding: 10px; position: relative; color: rgb(252, 151, 19);">
    <h1> DataBase Overview </h1>
 </div>
     <div class="container " >
@@ -44,6 +44,7 @@
                     </form>
                    
                     <p style="color: red;">{{message}}</p>
+                    <p style="color: green;"> {{message_succ}} </p>
                    
                 </div>
             </div>
